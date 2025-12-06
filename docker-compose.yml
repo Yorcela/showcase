@@ -13,7 +13,6 @@ services:
           cpus: "0.5"
           memory: "512m"
     environment:
-      # ✅ Vars attendues par l'image
       POSTGRES_USER: ${DATABASE_USER:-yorcela_dev}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-yorcela_pwd}
       POSTGRES_DB: ${DATABASE_NAME:-yorcela_dev}
