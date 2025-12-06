@@ -22,7 +22,7 @@ describe("EmailMailhogAdapter", () => {
     appConfigMock = {
       getMailhogHost: jest.fn().mockReturnValue("mailhog.local"),
       getMailhogPort: jest.fn().mockReturnValue(1025),
-      getEmailFrom: jest.fn().mockReturnValue("noreply@tallae.com"),
+      getEmailFrom: jest.fn().mockReturnValue("noreply@yorcela.com"),
     } as unknown as jest.Mocked<AppConfig>;
 
     sendMailMock = jest.fn().mockResolvedValue(undefined);
@@ -56,7 +56,7 @@ describe("EmailMailhogAdapter", () => {
       ignoreTLS: true,
     });
     expect(sendMailMock).toHaveBeenCalledWith({
-      from: "noreply@tallae.com",
+      from: "noreply@yorcela.com",
       to: "john@example.com",
       subject: "Welcome",
       html: "<p>Hello</p>",

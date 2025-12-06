@@ -4,7 +4,7 @@ x-backend-base: &backend_base
       condition: service_healthy
     db-bootstrap:
       condition: service_completed_successfully
-  networks: [tallae-network]
+  networks: [yorcela-network]
   restart: unless-stopped
   ports: ["${PORT:-3000}:3000"]
 
@@ -23,4 +23,4 @@ services:
       - ./uploads:/app/uploads
     environment:
       NODE_ENV: production
-      DATABASE_URL: "postgresql://${DATABASE_USER:-tallae_dev}:${DATABASE_PASSWORD:-tallae_pwd}@${DATABASE_HOST:-postgres}:5432/${DATABASE_NAME:-tallae_dev}?schema=public"
+      DATABASE_URL: "postgresql://${DATABASE_USER:-yorcela_dev}:${DATABASE_PASSWORD:-yorcela_pwd}@${DATABASE_HOST:-postgres}:5432/${DATABASE_NAME:-yorcela_dev}?schema=public"

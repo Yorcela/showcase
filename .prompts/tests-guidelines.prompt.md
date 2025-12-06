@@ -1,4 +1,4 @@
-# TALLAE TESTING GUIDELINES (for Codex or AI test generation)
+# YORCELA TESTING GUIDELINES (for Codex or AI test generation)
 
 Always generate Jest unit tests that follow these conventions:
 

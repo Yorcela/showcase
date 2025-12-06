@@ -1,4 +1,4 @@
--- Script d'initialisation PostgreSQL pour tallae
+-- Script d'initialisation PostgreSQL pour yorcela
 -- Création des extensions nécessaires
 
 -- Extension pgvector pour les embeddings
@@ -17,10 +17,10 @@ CREATE EXTENSION IF NOT EXISTS unaccent;
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 -- Création d'un utilisateur pour l'application (si nécessaire)
--- Note: L'utilisateur 'tallae' est déjà créé via DATABASE_USER
+-- Note: L'utilisateur 'yorcela' est déjà créé via DATABASE_USER
 
 -- Configuration de la base de données
-ALTER DATABASE tallae_dev SET timezone TO 'UTC';
+ALTER DATABASE yorcela_dev SET timezone TO 'UTC';
 
 -- Création d'un schéma pour les fonctions utilitaires
 CREATE SCHEMA IF NOT EXISTS utils;
@@ -66,13 +66,13 @@ $$ LANGUAGE plpgsql;
 -- (sera créé automatiquement par Prisma pour les colonnes vector)
 
 -- Configuration des permissions
-GRANT USAGE ON SCHEMA utils TO tallae;
-GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA utils TO tallae;
+GRANT USAGE ON SCHEMA utils TO yorcela;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA utils TO yorcela;
 
 -- Log de l'initialisation
 DO $$
 BEGIN
-    RAISE NOTICE 'Base de données tallae initialisée avec succès';
+    RAISE NOTICE 'Base de données yorcela initialisée avec succès';
     RAISE NOTICE 'Extensions installées: vector, uuid-ossp, pgcrypto, unaccent, pg_trgm';
     RAISE NOTICE 'Schéma utils créé avec fonctions utilitaires';
 END $$;

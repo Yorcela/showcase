@@ -6,7 +6,7 @@ CREATE TABLE "users" (
     "lastName" TEXT,
     "phone" TEXT,
     "role" TEXT NOT NULL DEFAULT 'USER',
-    "status" TEXT NOT NULL DEFAULT 'ACTIVE',
+    "status" TEXT NOT NULL DEFAULT 'PENDING_VERIFICATION',
     "passwordHash" TEXT,
     "emailVerifiedAt" DATETIME,
     "avatar" TEXT,
@@ -79,7 +79,7 @@ CREATE TABLE "password_resets" (
 CREATE TABLE "system_config" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "key" TEXT NOT NULL,
-    "value" JSONB NOT NULL,
+    "value" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );

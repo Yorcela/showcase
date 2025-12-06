@@ -1,4 +1,4 @@
-name: tallae
+name: yorcela
 
 services:
   postgres:
@@ -14,24 +14,24 @@ services:
           memory: "512m"
     environment:
       # ✅ Vars attendues par l'image
-      POSTGRES_USER: ${DATABASE_USER:-tallae_dev}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-tallae_pwd}
-      POSTGRES_DB: ${DATABASE_NAME:-tallae_dev}
+      POSTGRES_USER: ${DATABASE_USER:-yorcela_dev}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-yorcela_pwd}
+      POSTGRES_DB: ${DATABASE_NAME:-yorcela_dev}
       POSTGRES_INITDB_ARGS: ${DATABASE_INITDB_ARGS:---encoding=UTF-8 --lc-collate=C --lc-ctype=C}
     volumes:
       - DATABASE_data:/var/lib/postgresql/data
     healthcheck:
       test:
-        ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tallae_dev} -d ${POSTGRES_DB:-tallae_dev}"]
+        ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-yorcela_dev} -d ${POSTGRES_DB:-yorcela_dev}"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 30s
-    networks: [tallae-network]
+    networks: [yorcela-network]
     restart: unless-stopped
 
 networks:
-  tallae-network:
+  yorcela-network:
     driver: bridge
 
 volumes:

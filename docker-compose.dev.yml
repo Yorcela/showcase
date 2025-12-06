@@ -1,5 +1,5 @@
 x-backend-base: &backend_base
-  networks: [tallae-network]
+  networks: [yorcela-network]
   restart: unless-stopped
   ports: ["${PORT:-3000}:3000"]
 
@@ -35,7 +35,7 @@ services:
           memory: "256m"
     platform: linux/amd64
     ports: ["1025:1025", "8025:8025"]
-    networks: [tallae-network]
+    networks: [yorcela-network]
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "nc -z localhost 1025 || nc -z localhost 8025"]

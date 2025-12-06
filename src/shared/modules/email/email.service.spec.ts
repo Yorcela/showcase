@@ -19,7 +19,7 @@ describe("EmailService", () => {
     } as unknown as jest.Mocked<TemplateRendererPort>;
 
     const appConfig = {
-      getEmailFrom: jest.fn().mockReturnValue("noreply@tallae.com"),
+      getEmailFrom: jest.fn().mockReturnValue("noreply@yorcela.com"),
     } as unknown as jest.Mocked<AppConfig>;
 
     const service = new EmailService(provider, renderer, appConfig);
@@ -46,8 +46,8 @@ describe("EmailService", () => {
       to: recipient,
       html: "<p>Hello</p>",
       text: "Hello",
-      subject: "[tallae] Welcome",
-      from: "noreply@tallae.com",
+      subject: "[yorcela] Welcome",
+      from: "noreply@yorcela.com",
     };
     expect(provider.send).toHaveBeenCalledWith(expectedOptions);
     expect(appConfig.getEmailFrom).toHaveBeenCalledTimes(1);

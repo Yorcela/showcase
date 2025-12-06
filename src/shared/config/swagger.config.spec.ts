@@ -54,7 +54,7 @@ describe("setupSwagger", () => {
       NODE_ENV: "test",
       SWAGGER_ENABLED: true,
       SWAGGER_PATH: "docs",
-      APP_NAME: "tallae",
+      APP_NAME: "yorcela",
       APP_VERSION: "1.2.3",
       FRONTEND_URL: "https://front.example",
       APP_URL: "https://api.example",
@@ -65,7 +65,7 @@ describe("setupSwagger", () => {
     setupSwagger(app);
 
     // Then
-    expect(builderMock.setTitle).toHaveBeenCalledWith("tallae API");
+    expect(builderMock.setTitle).toHaveBeenCalledWith("yorcela API");
     expect(builderMock.addServer).toHaveBeenCalledWith("https://api.example", "Serveur de test");
     expect(SwaggerModule.createDocument).toHaveBeenCalledWith(
       app,

@@ -23,7 +23,7 @@ describe("AppConfig", () => {
       NODE_ENV: "production",
       PORT: 3000,
       API_PREFIX: "api",
-      APP_NAME: "tallae",
+      APP_NAME: "yorcela",
       APP_VERSION: "1.0.0",
       APP_URL: "https://api.example",
       FRONTEND_URL: "https://front.example",
@@ -41,7 +41,7 @@ describe("AppConfig", () => {
     expect(cfg.isTest()).toBe(false);
     expect(cfg.getPort()).toBe(3000);
     expect(cfg.getApiPrefix()).toBe("api");
-    expect(cfg.getAppName()).toBe("tallae");
+    expect(cfg.getAppName()).toBe("yorcela");
     expect(cfg.getAppVersion()).toBe("1.0.0");
     expect(cfg.getAppUrl()).toBe("https://api.example");
     expect(cfg.getFrontendUrl()).toBe("https://front.example");

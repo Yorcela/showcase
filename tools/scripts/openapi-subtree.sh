@@ -12,7 +12,7 @@ fi
 
 if ! git remote get-url "$REMOTE_NAME" >/dev/null 2>&1; then
   echo "❌ Remote '$REMOTE_NAME' introuvable. Ajoute-le par ex. :"
-  echo "   git remote add $REMOTE_NAME git@github.com:tallae/tallae-openapi.git"
+  echo "   git remote add $REMOTE_NAME git@github.com:yorcela/yorcela-openapi.git"
   exit 1
 fi
 

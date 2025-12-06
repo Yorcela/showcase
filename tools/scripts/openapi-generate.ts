@@ -35,7 +35,7 @@ async function generateOpenApiSpec() {
 
     const cfg = new DocumentBuilder()
       .setTitle(appConfig.getAppName())
-      .setDescription('REST API for tallae')
+      .setDescription('REST API for yorcela')
       .setVersion(appConfig.getAppVersion())
       .addServer(appConfig.getAppUrl(), `${appConfig.getNodeEnv().toUpperCase()} server`)
       .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' }, 'JWT-auth')

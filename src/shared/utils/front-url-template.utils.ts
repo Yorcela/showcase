@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { APP_CONFIG, AppConfig } from "../modules/config/app.config";
 
-// tallae-web/src/app/feature/register/register.routes.ts
+// yorcela-web/src/app/feature/register/register.routes.ts
 export enum FrontPageUrls {
   REGISTER_VERIFYEMAIL = "register/verify?token={token}&code={code}",
   RESET_PASSWORD = "auth/reset-password?token={token}",

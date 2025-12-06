@@ -1,7 +1,7 @@
 {
-  "name": "tallae-backend",
+  "name": "yorcela-backend",
   "version": "0.1.0",
-  "description": "tallae Backend API - NestJS with Clean Architecture",
+  "description": "yorcela Backend API - NestJS with Clean Architecture",
   "author": "Alec ROY",
   "license": "UNLICENSED",
   "private": true,

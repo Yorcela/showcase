@@ -28,7 +28,7 @@ export class EmailService {
       to,
       html,
       text,
-      subject: `[tallae] ${subject}`,
+      subject: `[yorcela] ${subject}`,
       from: this.appConfig.getEmailFrom(),
     };
     await this.provider.send(options);

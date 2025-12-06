@@ -3,7 +3,7 @@ import { ConfigService } from "@nestjs/config";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 /**
- * Configuration Swagger/OpenAPI pour l'API tallae
+ * Configuration Swagger/OpenAPI pour l'API yorcela
  * Génère la documentation automatique et les endpoints /docs et /docs-json
  */
 export function setupSwagger(app: INestApplication): void {
@@ -11,9 +11,9 @@ export function setupSwagger(app: INestApplication): void {
   const nodeEnv = configService.get<string>("NODE_ENV", "development");
   const isSwaggerEnabled = configService.get<boolean>("SWAGGER_ENABLED", true);
   const swaggerPath = configService.get<string>("SWAGGER_PATH", "docs");
-  const appName = configService.get<string>("APP_NAME", "tallae");
+  const appName = configService.get<string>("APP_NAME", "yorcela");
   const appVersion = configService.get<string>("APP_VERSION", "1.0.0");
-  const frontUrl = configService.get<string>("FRONTEND_URL", "https://www.tallae.app");
+  const frontUrl = configService.get<string>("FRONTEND_URL", "https://www.yorcela.app");
   const appUrl = configService.get<string>("APP_URL");
   if (!appUrl) {
     throw new Error("APP_URL environment variable is required");
@@ -27,7 +27,7 @@ export function setupSwagger(app: INestApplication): void {
     .setTitle(`${appName} API`)
     .setDescription("")
     .setVersion(appVersion)
-    .setContact("tallae Team", frontUrl, "contact@tallae.app")
+    .setContact("yorcela Team", frontUrl, "contact@yorcela.app")
     .setLicense("Propriétaire", `${frontUrl}`)
     .addServer(appUrl, `Serveur de ${nodeEnv}`)
     .addBearerAuth(
