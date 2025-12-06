@@ -21,7 +21,7 @@ You can use it as you want, this is free of charge.
 
 
 ## Prerequisites
-- Node 18+ and pnpm (see `package.json` for the pinned pnpm version)
+- Node 20+ and pnpm (see `package.json` for the pinned pnpm version)
 - Docker (optional) if you want to run via `docker compose`
 
 ## Getting started
