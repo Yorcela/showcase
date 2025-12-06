@@ -31,17 +31,14 @@ jobs:
           version: 10.19.0
           run_install: false
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
       - name: Init env for CI
         run: pnpm ci:init
 
       - name: Lint and format
-        run: pnpm lint:fix && pnpm lint
+        run: pnpm lint
 
       - name: Tests with coverage
-        run: pnpm test:cov
+        run: pnpm ci:test
 
       - name: Fail on uncommitted changes
         run: |

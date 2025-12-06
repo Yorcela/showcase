@@ -1,15 +1,24 @@
 # Yorcela Showcase
 
 ## About this project
-This repository is a portfolio-style codebase meant to show how I structure services, handle auth (access + refresh tokens in session), and manage tooling.
+This repository is a showcase project built to demonstrate my backend practices, to show how I structure services, handle auth, and manage tooling; parts of it were authored with generative AI following my technical instructions, especially the tests (you'll find the prompt I use here `.prompts/tests-guidelines.prompt.md`).
 
-It is a NestJS backend starter that shows a clean architecture setup with authentication: username/password login, access tokens, and refresh tokens stored in the session. This is a showcase project built to demonstrate my backend practices; parts of it were authored with generative AI following my technical instructions.
+You can use it as you want, this is free of charge.
 
 ## What’s inside
-- NestJS 11, TypeScript, Prisma (SQLite by default, PostgreSQL optional) - All Dockerised
+### Tech
+- Dockerised apps
+    - NestJS 11 and TypeScript (`strict mode`) 
+    - Prisma (SQLite by default, PostgreSQL available)
+    - (dev) Mailhog
+- DDD, hexagonal architecture, Repository Pattern
+- Request throttling, validation, and basic email (server + template) plumbing
+- ESLint + Prettier, Jest with coverage targets, GitHub Action for CI
+### Features
+- 2 steps registrations (email -> OTP)
 - Auth with access token + session-based refresh token flow
-- Request throttling, validation, and basic email plumbing
-- ESLint + Prettier, Jest with coverage targets, Husky-equivalent GitHub Action for CI
+- Fully documented Swagger API (with decorators)
+
 
 ## Prerequisites
 - Node 18+ and pnpm (see `package.json` for the pinned pnpm version)
@@ -25,7 +34,7 @@ pnpm dev:local:up       # run app out Docker (need to self host everything)
 ```
 
 
-### Useful URLs
+### URLs
 - 👾 [API](http://localhost:3000)
 - 📄 [API Swagger](http://localhost:3000/swagger)
 - 📧 [MailHog](http://localhost:8025) (catching emails)

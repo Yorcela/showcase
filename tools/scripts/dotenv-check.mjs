@@ -76,7 +76,6 @@ if (extrasInExample.length) {
 }
 
 if (FIX && missingInExample.length) {
-  // append KEY=VALUE using VALUE from .env (raw, unchanged)
   const lines = "\n" + missingInExample.map((k) => `${k}=${envMap.get(k) ?? ""}`).join("\n") + "\n";
   appendFileSync(examplePath, lines, "utf8");
   console.log(
