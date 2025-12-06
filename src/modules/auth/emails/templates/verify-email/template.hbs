@@ -1,0 +1,33 @@
+{{#> layout title=(t 'verify-email.subject') }}
+
+<p>{{{t 'verify-email.greeting'}}},</p>
+<p>{{{t 'verify-email.intro'}}}</p>
+
+<div class="otp">
+    <div class="otp-number">{{code}}</div>
+    <p class="otp-caption">{{t 'verify-email.codeLabel'}}</p>
+</div>
+
+<p>{{t 'verify-email.alternativeText'}}</p>
+{{> button href=verificationLink label=(t 'verify-email.buttonText') }}
+<p class="small" style="overflow: scroll;">
+    <em>{{{t 'verify-email.linkFallback'verificationLink=verificationLink}}}</em>
+</p>
+
+<div class="warning">
+    <strong>{{t 'verify-email.warningTitle'}}</strong>
+    <ul style="margin:10px 0 0 0; padding-left:20px;">
+        <li>{{{t 'verify-email.warningItems.expiry'}}}</li>
+        <li>{{t 'verify-email.warningItems.security'}}</li>
+        <li>{{t 'verify-email.warningItems.ignore'}}</li>
+    </ul>
+</div>
+
+<div class="small">
+    <p>{{t 'verify-email.troubleshooting'}}</p>
+    <ul style="padding-left:20px;">
+        <li>{{t 'verify-email.troubleshootingItems.newCode'}}</li>
+    </ul>
+</div>
+
+{{/layout}}

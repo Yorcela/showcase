@@ -1,0 +1,22 @@
+{
+  "verify-email": {
+    "subject": "Verify your email address",
+    "title": "Verify your email address",
+    "greeting": "Hello",
+    "intro": "Thank you for signing up to <strong>tallae</strong>! To complete your registration, please verify your email address using the code below:",
+    "codeLabel": "Verification code",
+    "buttonText": "Verify my email",
+    "alternativeText": "You can also click the button below to automatically verify your email:",
+    "linkFallback": "If you can’t click the button, copy and paste this link into your browser:<br>{{verificationLink}}",
+    "warningTitle": "⚠️ Important:",
+    "warningItems": {
+      "expiry": "This code expires in <strong>{{otpExpirationTime}} minutes</strong>",
+      "security": "Never share this code with anyone",
+      "ignore": "If you did not request this verification, please ignore this email"
+    },
+    "troubleshooting": "If you’re having trouble, you can:",
+    "troubleshootingItems": {
+      "newCode": "Request a new code from the app"
+    }
+  }
+}

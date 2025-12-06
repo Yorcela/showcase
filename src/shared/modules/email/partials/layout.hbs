@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    {{> base-style}}
+</head>
+
+<body class="ff-base c-text">
+    <main>
+        <div class="wrapper">
+            <div class="card">
+                <header>{{> header frontUrl=frontUrl }}</header>
+                {{> @partial-block}}
+            </div>
+        </div>
+    </main>
+    <footer>{{> footer email=email emailSupport=emailSupport }}</footer>
+</body>
+
+</html>

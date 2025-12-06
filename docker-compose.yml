@@ -1,0 +1,38 @@
+name: tallae
+
+services:
+  postgres:
+    profiles: ["postgresql"]
+    image: pgvector/pgvector:pg15
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "1g"
+        reservations:
+          cpus: "0.5"
+          memory: "512m"
+    environment:
+      # ✅ Vars attendues par l'image
+      POSTGRES_USER: ${DATABASE_USER:-tallae_dev}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-tallae_pwd}
+      POSTGRES_DB: ${DATABASE_NAME:-tallae_dev}
+      POSTGRES_INITDB_ARGS: ${DATABASE_INITDB_ARGS:---encoding=UTF-8 --lc-collate=C --lc-ctype=C}
+    volumes:
+      - DATABASE_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tallae_dev} -d ${POSTGRES_DB:-tallae_dev}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks: [tallae-network]
+    restart: unless-stopped
+
+networks:
+  tallae-network:
+    driver: bridge
+
+volumes:
+  DATABASE_data:

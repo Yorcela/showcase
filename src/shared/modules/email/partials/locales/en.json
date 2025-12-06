@@ -1,0 +1,8 @@
+{
+  "emails": {
+    "footer": {
+      "sentTo": "This email was sent to <strong>{{email}}</strong>.",
+      "support": "For any assistance, please contact our support at <a href=\"mailto:{{emailSupport}}\">{{emailSupport}}</a>."
+    }
+  }
+}

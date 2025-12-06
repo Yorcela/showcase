@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "watchAssets": true,
+    "webpack": true,
+    "assets": [
+      {
+        "include": "public/**/*"
+      },
+      {
+        "include": "modules/emails/templates/**/*.*"
+      }
+    ],
+    "tsConfigPath": "tsconfig.json"
+  },
+  "watchOptions": {
+    "poll": 250,
+    "ignored": [
+      "**/node_modules/**",
+      "**/.git/**",
+      "**/dist/**",
+      "**/coverage/**"
+    ]
+  }
+}

@@ -1,0 +1,851 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "description": "Registers email and sends a verification OTP.",
+        "operationId": "RegistrationController_registerEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthRegisterInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/AuthRegisterPayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_VER_005",
+                        "message": "Email address is already verified"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_REG_002",
+                        "message": "Email could not be sent"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Register by email",
+        "tags": [
+          "register"
+        ]
+      }
+    },
+    "/auth/register/verify": {
+      "post": {
+        "description": "Verifies email through OTP and token.",
+        "operationId": "RegistrationController_verifyEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthVerifyEmailInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/AuthVerifyEmailPayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_VER_001",
+                        "message": "Invalid verification code provided"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_DB_001",
+                        "message": "Could not persist data."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Verify email",
+        "tags": [
+          "register"
+        ]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "Login the user.",
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/AuthTokenPayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_RT_001",
+                        "message": "Invalid or expired refresh token"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "login"
+        ]
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "description": "Reads the HttpOnly refresh token cookie and returns a new access token. No body is required; send only the cookie.",
+        "operationId": "AuthController_refresh",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/AuthTokenPayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_RT_001",
+                        "message": "Invalid or expired refresh token"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth-rt": []
+          }
+        ],
+        "summary": "Refresh Access Token",
+        "tags": [
+          "login"
+        ]
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "description": "Clears the refresh-token cookie and revokes the active session. No body is required; only the cookie is read.",
+        "operationId": "AuthController_logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/AuthTokenPayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_REG_EMAIL_SEND_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Failed to send registration email"
+                        },
+                        "context": {
+                          "type": "object",
+                          "nullable": true
+                        }
+                      },
+                      "example": {
+                        "code": "AUTH_RT_001",
+                        "message": "Invalid or expired refresh token"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth-rt": []
+          }
+        ],
+        "summary": "Logout",
+        "tags": [
+          "login"
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "description": "Get informations for currently logged user.",
+        "operationId": "UsersController_getConnectedUserProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/UsersMePayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "auth-rt": []
+          }
+        ],
+        "summary": "Get user informations",
+        "tags": [
+          "me"
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "description": "Basic endpoint returning information to know the API health",
+        "operationId": "HealthController_getHealth",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/HealthCheckPayloadDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "API health check",
+        "tags": [
+          "health"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "tallae API",
+    "description": "REST API for tallae",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "health",
+      "description": "Api Health"
+    }
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "DEVELOPMENT server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "JWT-auth": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "AuthRegisterPayloadDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Adresse email",
+            "example": "address@example.com",
+            "format": "email"
+          },
+          "verificationToken": {
+            "type": "string",
+            "description": "Token de vérification",
+            "example": "8ad25434f308977f08e406f20b68150dc3988ce9a1f82f1eca81cb5ac71d76bf"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AuthRegisterInputDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Adresse email",
+            "example": "address@example.com",
+            "format": "email"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "AuthVerifyEmailPayloadDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "Token d'accès JWT",
+            "example": "8ad25434f308977f08e406f20b68150dc3988ce9a1f82f1eca81cb5ac71d76bf"
+          },
+          "refreshToken": {
+            "type": "string",
+            "description": "Token de rafraîchissement",
+            "example": "8ad25434f308977f08e406f20b68150dc3988ce9a1f82f1eca81cb5ac71d76bf"
+          }
+        }
+      },
+      "AuthVerifyEmailInputDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Adresse email",
+            "example": "address@example.com",
+            "format": "email"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code OTP",
+            "example": "123456"
+          },
+          "verificationToken": {
+            "type": "string",
+            "description": "Token de vérification",
+            "example": "8ad25434f308977f08e406f20b68150dc3988ce9a1f82f1eca81cb5ac71d76bf"
+          }
+        },
+        "required": [
+          "email",
+          "code",
+          "verificationToken"
+        ]
+      },
+      "AuthTokenPayloadDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "Token d'accès JWT",
+            "example": "8ad25434f308977f08e406f20b68150dc3988ce9a1f82f1eca81cb5ac71d76bf"
+          },
+          "refreshToken": {
+            "type": "string",
+            "description": "Token de rafraîchissement",
+            "example": "8ad25434f308977f08e406f20b68150dc3988ce9a1f82f1eca81cb5ac71d76bf"
+          }
+        }
+      },
+      "LoginInputDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Adresse email",
+            "example": "address@example.com",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password (minimum 8 characters, NIST 800-63B compliant)",
+            "example": "#my$uper$3cr3tPwd#",
+            "minLength": 8,
+            "maxLength": 128
+          },
+          "rememberMe": {
+            "type": "boolean",
+            "description": "Allonger la durée de la session à 90 jours",
+            "example": "true"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "UserResponsePayloadDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Identifiant unique",
+            "example": "clp1234567890abcdef"
+          },
+          "email": {
+            "type": "string",
+            "description": "Adresse email",
+            "example": "address@example.com",
+            "format": "email"
+          },
+          "hasPassword": {
+            "type": "boolean",
+            "description": "Tells if a user has already a password set or not",
+            "example": true
+          },
+          "status": {
+            "type": "string",
+            "description": "Statut du compte",
+            "example": "ACTIVE",
+            "enum": [
+              "PENDING_VERIFICATION",
+              "ACTIVE",
+              "SUSPENDED",
+              "BANNED",
+              "SOFT_DELETED"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "description": "Rôle du compte",
+            "example": "USER",
+            "enum": [
+              "USER",
+              "ADMIN",
+              "GOD"
+            ]
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Prénom",
+            "example": "John",
+            "maxLength": 50
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Nom de famille",
+            "example": "Doe",
+            "maxLength": 50
+          },
+          "emailVerifiedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de vérification de l'email",
+            "example": "2024-01-01T12:00:00.000Z"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de création",
+            "example": "2024-01-01T12:00:00.000Z"
+          }
+        }
+      },
+      "UsersMePayloadDto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "description": "User summary payload",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserResponsePayloadDto"
+              }
+            ]
+          }
+        }
+      },
+      "HealthCheckDetailsDto": {
+        "type": "object",
+        "properties": {
+          "uptime": {
+            "type": "number",
+            "description": "Uptime du process (secondes)",
+            "example": 123.456
+          },
+          "version": {
+            "type": "string",
+            "description": "Version de l'application",
+            "example": "1.0.0"
+          },
+          "environment": {
+            "type": "string",
+            "description": "Environnement d'exécution",
+            "example": "development",
+            "enum": [
+              "development",
+              "test",
+              "staging",
+              "production"
+            ]
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Horodatage ISO",
+            "example": "2025-11-01T11:47:03.916Z"
+          },
+          "responseTime": {
+            "type": "number",
+            "description": "Temps de réponse (ms)",
+            "example": 42
+          },
+          "pid": {
+            "type": "number",
+            "description": "PID du process Node",
+            "example": 12345,
+            "minimum": 1
+          },
+          "nodeVersion": {
+            "type": "string",
+            "description": "Version de Node.js",
+            "example": "v20.10.0"
+          }
+        },
+        "required": [
+          "uptime",
+          "version",
+          "environment",
+          "timestamp",
+          "responseTime",
+          "pid",
+          "nodeVersion"
+        ]
+      },
+      "HealthCheckPayloadDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Statut de l'app",
+            "example": "OK | ERROR",
+            "enum": [
+              "ERROR",
+              "OK"
+            ]
+          },
+          "info": {
+            "type": "object",
+            "description": "Objet de checks/infos techniques (clé/valeur libre)",
+            "example": {
+              "db": {
+                "status": "up",
+                "latencyMs": 12
+              },
+              "redis": {
+                "status": "up"
+              }
+            },
+            "additionalProperties": true
+          },
+          "details": {
+            "$ref": "#/components/schemas/HealthCheckDetailsDto"
+          }
+        },
+        "required": [
+          "status",
+          "details"
+        ]
+      }
+    }
+  }
+}
