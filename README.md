@@ -26,8 +26,8 @@ This repository is a showcase project built to demonstrate my backend practices,
 
 ## Getting started
 ```bash
-git clone git@github.com:Yorcela/nestapi-boilerplate.git
-cd nestapi-boilerplate
+git clone git@github.com:Yorcela/showcase.git
+cd showcase
 pnpm apps:init
 pnpm dev:up             # run apps in Docker
 pnpm dev:local:up       # run app out Docker (need to self host everything)
